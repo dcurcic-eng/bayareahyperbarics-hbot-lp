@@ -2,6 +2,13 @@
 <html lang="en">
 <!-- v:1777983199 -->
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K9Z6FS85');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
@@ -665,6 +672,49 @@ input,textarea{
   transition:background-color 500ms var(--signature-ease),box-shadow 500ms var(--signature-ease);
 }
 .contact-form .submit:hover{background:var(--teal-deep);box-shadow:0 12px 32px rgba(0,125,123,.28)}
+.benefit-form__field{display:flex;flex-direction:column;gap:6px}
+.benefit-form__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){
+  .benefit-form__row{grid-template-columns:1fr}
+}
+.benefit-form__label{
+  font-family:'Raleway',sans-serif;font-weight:600;font-size:12px;
+  letter-spacing:.4px;color:var(--charcoal-grey);text-transform:uppercase;
+}
+.benefit-form__input{
+  background:var(--surface-soft);border:1px solid transparent;border-radius:18px;
+  padding:16px 20px;font-family:'Rubik',sans-serif;font-weight:400;font-size:15px;
+  color:var(--charcoal);width:100%;
+}
+.benefit-form__input::placeholder{color:#A0AAA9}
+.benefit-form__input:focus{
+  outline:none;border-color:var(--teal);background:var(--white);
+  box-shadow:0 0 0 3px rgba(0,125,123,.12);
+}
+.benefit-form__textarea{min-height:96px;resize:vertical;font-family:'Rubik',sans-serif;line-height:1.5}
+.benefit-form__consent{display:flex;align-items:flex-start;gap:10px;margin-top:4px;width:100%}
+.benefit-form__checkbox{
+  flex:0 0 18px;width:18px;height:18px;margin-top:2px;accent-color:var(--teal);cursor:pointer;
+}
+.benefit-form__consent-text{
+  flex:1 1 auto;min-width:0;
+  font-family:'Rubik',sans-serif;font-weight:300;font-size:12px;line-height:1.5;
+  color:var(--charcoal-grey);cursor:pointer;
+}
+.benefit-form__consent-text i{font-style:italic}
+.benefit-form__error{
+  display:none;color:#B0263C;font-family:'Rubik',sans-serif;font-size:13px;font-weight:400;
+  padding:8px 12px;background:rgba(176,38,60,.08);border-radius:10px;
+}
+.form-success-message{
+  background:var(--surface-soft);border-radius:18px;padding:28px;text-align:center;
+}
+.form-success-message h3{
+  font-family:'Raleway',sans-serif;font-weight:600;font-size:22px;color:var(--teal);margin-bottom:8px;
+}
+.form-success-message p{
+  font-family:'Rubik',sans-serif;font-weight:300;font-size:14px;color:var(--charcoal-grey);line-height:1.6;
+}
 
 .map-card{
   position:relative;background:#E6F3F1;border-radius:24px;height:280px;overflow:hidden;
@@ -893,6 +943,10 @@ input,textarea{
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K9Z6FS85"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- ═══════════════════════════════════════════════ NAV (sticky) -->
 <nav class="nav" id="siteNav">
@@ -930,20 +984,86 @@ input,textarea{
       <p class="hero-sub">Hospital-grade hyperbaric oxygen at 2.0-2.8 ATA, for radiation injury, diabetic wounds, brain trauma, athletic recovery and the long arc of cellular aging. 90 minutes. A movie. A nap. Real recovery.</p>
     </div>
 
-    <form class="hero-form-card scroll-target" id="hero-form">
+    <form class="hero-form-card scroll-target staff-benefit-form benefit-form" id="hero-form">
       <span class="hero-form-eye">Free consult, no chatbots</span>
       <h3>Talk to our medical staff.</h3>
       <p class="hf-sub">Our medical staff will follow up shortly, never a chatbot.</p>
-      <div class="field-row">
-        <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required />
-        <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required />
+      <div class="benefit-form__row">
+        <input
+          id="hero_first_name"
+          name="first_name"
+          type="text"
+          placeholder="First name"
+          autocomplete="given-name"
+          aria-label="First name"
+          required
+          class="benefit-form__input"
+        />
+        <input
+          id="hero_last_name"
+          name="last_name"
+          type="text"
+          placeholder="Last name"
+          autocomplete="family-name"
+          aria-label="Last name"
+          required
+          class="benefit-form__input"
+        />
       </div>
-      <div class="field-row">
-        <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" required />
-        <input type="email" name="email" placeholder="Email" autocomplete="email" required />
+      <div class="benefit-form__row">
+        <input
+          id="hero_phone"
+          name="phone"
+          type="tel"
+          placeholder="Phone"
+          autocomplete="tel"
+          aria-label="Phone"
+          required
+          class="benefit-form__input"
+        />
+        <input
+          id="hero_email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          autocomplete="email"
+          aria-label="Email"
+          required
+          class="benefit-form__input"
+        />
       </div>
-      <textarea name="message" placeholder="Tell us briefly what's going on."></textarea>
-      <button class="submit" type="submit">Send a private message <i class="ph-bold ph-paper-plane-tilt"></i></button>
+      <textarea
+        id="hero_message"
+        name="message"
+        placeholder="Tell us briefly what's going on."
+        aria-label="Message"
+        class="benefit-form__input benefit-form__textarea"
+      ></textarea>
+
+      <div class="benefit-form__consent">
+        <input
+          id="hero_newsletter"
+          name="newsletter"
+          type="checkbox"
+          required
+          class="benefit-form__checkbox"
+        />
+        <label for="hero_newsletter" class="benefit-form__consent-text">
+          <i>
+            By submitting this form, you agree to receive marketing text messages,
+            alerts, and notifications from Bay Area Hyperbarics.
+            Message frequency may vary. Rates may be applied.
+            You can opt out at any time by replying STOP.
+          </i>
+        </label>
+      </div>
+
+      <div
+        class="benefit-form__error"
+        role="alert"
+        aria-live="polite"
+      ></div>
+      <button type="submit" class="submit submit-btn btn btn--primary form-submit-button">Send a private message <i class="ph-bold ph-paper-plane-tilt"></i></button>
       <span class="hf-foot"><i class="ph-fill ph-lock-key"></i> Private and secure. We'll be in touch shortly.</span>
     </form>
   </div>
@@ -1356,18 +1476,85 @@ input,textarea{
     </div>
 
     <div class="contact-r">
-      <form class="contact-form" id="contactForm">
+      <form class="contact-form staff-benefit-form benefit-form" id="contactForm">
         <h3>Send us a note</h3>
-        <div class="field-row">
-          <input type="text" name="firstName" placeholder="First name" autocomplete="given-name" required />
-          <input type="text" name="lastName" placeholder="Last name" autocomplete="family-name" required />
+        <div class="benefit-form__row">
+          <input
+            id="first_name"
+            name="first_name"
+            type="text"
+            placeholder="First name"
+            autocomplete="given-name"
+            aria-label="First name"
+            required
+            class="benefit-form__input"
+          />
+          <input
+            id="last_name"
+            name="last_name"
+            type="text"
+            placeholder="Last name"
+            autocomplete="family-name"
+            aria-label="Last name"
+            required
+            class="benefit-form__input"
+          />
         </div>
-        <div class="field-row">
-          <input type="tel" name="phone" placeholder="Phone" autocomplete="tel" required />
-          <input type="email" name="email" placeholder="Email" autocomplete="email" required />
+        <div class="benefit-form__row">
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Phone"
+            autocomplete="tel"
+            aria-label="Phone"
+            required
+            class="benefit-form__input"
+          />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            autocomplete="email"
+            aria-label="Email"
+            required
+            class="benefit-form__input"
+          />
         </div>
-        <textarea placeholder="Tell us what's going on, in plain English."></textarea>
-        <button class="submit" type="submit">Send a private message <i class="ph-bold ph-paper-plane-tilt"></i></button>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Tell us briefly what's going on."
+          aria-label="Message"
+          class="benefit-form__input benefit-form__textarea"
+        ></textarea>
+
+        <div class="benefit-form__consent">
+          <input
+            id="newsletter"
+            name="newsletter"
+            type="checkbox"
+            required
+            class="benefit-form__checkbox"
+          />
+          <label for="newsletter" class="benefit-form__consent-text">
+            <i>
+              By submitting this form, you agree to receive marketing text messages,
+              alerts, and notifications from Bay Area Hyperbarics.
+              Message frequency may vary. Rates may be applied.
+              You can opt out at any time by replying STOP.
+            </i>
+          </label>
+        </div>
+
+        <div
+          id="form-error"
+          class="benefit-form__error"
+          role="alert"
+          aria-live="polite"
+        ></div>
+        <button type="submit" class="submit submit-btn btn btn--primary form-submit-button">Send a private message <i class="ph-bold ph-paper-plane-tilt"></i></button>
       </form>
       <div class="map-card">
         <iframe
@@ -1588,15 +1775,113 @@ input,textarea{
   });
 })();
 
-/* Contact form (any) */
-(function(){
-  document.querySelectorAll('#contactForm, #hero-form').forEach(f => {
-    f.addEventListener('submit', e => {
+/* Staff benefit form submission (AEVA API) — handles all .staff-benefit-form */
+(function () {
+  const forms = document.querySelectorAll('.staff-benefit-form');
+  const ORG_ID = '1d8f2456-3a92-4b0a-98d7-63731e79dc47';
+  const FORM_ID = '491';
+  const ENDPOINT = 'https://api.aevadigital.com/api/v1/contacts/add_contact_from_form/';
+
+  const trackingMap = {
+    gclid: 'google',
+    wbraid: 'google',
+    gbraid: 'google',
+    fbclid: 'meta',
+    ttclid: 'tiktok',
+  };
+
+  function getTracking() {
+    const urlParams = new URLSearchParams(window.location.search);
+    for (const [param, source] of Object.entries(trackingMap)) {
+      const val = urlParams.get(param);
+      if (val) return { trackingParam: val, adSource: source };
+    }
+    return { trackingParam: '', adSource: 'other' };
+  }
+
+  forms.forEach((form) => {
+    const submitBtn = form.querySelector('.submit-btn, .submit');
+    const errEl = form.querySelector('.benefit-form__error');
+    const originalBtnHTML = submitBtn ? submitBtn.innerHTML : '';
+
+    function val(name) {
+      const el = form.querySelector(`[name="${name}"]`);
+      return el ? (el.value || '').trim() : '';
+    }
+
+    function showError(msg) {
+      if (!errEl) return;
+      errEl.textContent = msg;
+      errEl.style.display = msg ? 'block' : 'none';
+    }
+
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const btn = f.querySelector('.submit');
-      if (!btn) return;
-      btn.textContent = 'Sent. Our medical staff will follow up shortly.';
-      btn.style.background = 'var(--teal-deep)';
+      showError('');
+      if (!submitBtn) return;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending…';
+
+      const first_name = val('first_name');
+      const last_name = val('last_name');
+      const email = val('email');
+      const phone = val('phone').replace(/\D/g, '');
+      const newsletterEl = form.querySelector('[name="newsletter"]');
+      const checkbox = newsletterEl && newsletterEl.checked ? 'on' : '';
+
+      const emailRe = /^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/;
+      if (!emailRe.test(email)) {
+        showError('Please enter a valid email address.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        return;
+      }
+
+      const phoneRe = /^[0-9]{10}$/;
+      if (!phoneRe.test(phone)) {
+        showError('Please enter a 10-digit US phone number.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+        return;
+      }
+
+      const { trackingParam, adSource } = getTracking();
+
+      const fd = new FormData();
+      fd.append('first_name', first_name);
+      fd.append('last_name', last_name);
+      fd.append('phone', `+1${phone}`);
+      fd.append('email', email);
+      fd.append('checkbox', checkbox);
+      fd.append('organization', ORG_ID);
+      fd.append('form', FORM_ID);
+      fd.append('message', val('message'));
+      fd.append('form_location', window.location.href);
+      fd.append('tracking_param', trackingParam);
+      fd.append('ad_source', adSource);
+
+      try {
+        const res = await fetch(ENDPOINT, { method: 'POST', body: fd });
+
+        if (!res.ok) {
+          const txt = await res.text().catch(() => res.statusText);
+          throw new Error(txt || 'Server error');
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ 'event': 'form-success' });
+
+        form.style.display = 'none';
+        const thankYou = document.createElement('div');
+        thankYou.className = 'form-success-message';
+        thankYou.innerHTML = '<h3>Thank You!</h3><p>Your consultation request has been received. We\'ll be in touch shortly.</p>';
+        form.parentNode.insertBefore(thankYou, form.nextSibling);
+      } catch (err) {
+        console.error(err);
+        showError('Submission failed — please try again.');
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHTML;
+      }
     });
   });
 })();
