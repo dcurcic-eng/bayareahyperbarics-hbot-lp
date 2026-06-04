@@ -1402,7 +1402,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="contact-r">
       <div class="contact-form" id="contactForm" style="padding:0;overflow:hidden;">
-        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=28784838&ref=embedded_csp" title="Schedule Appointment" width="100%" height="800" frameBorder="0" allow="payment"></iframe><script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+        <iframe id="acuityFrame" src="https://app.acuityscheduling.com/schedule.php?owner=28784838&ref=embedded_csp" title="Schedule Appointment" width="100%" height="800" frameBorder="0" allow="payment"></iframe><script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+        <script>
+          (function () {
+            var notified = false;
+            window.addEventListener('message', function (event) {
+              if (!/acuityscheduling\.com$/.test(new URL(event.origin).hostname)) return;
+
+              var data = event.data;
+              var payload = typeof data === 'string' ? data : JSON.stringify(data || {});
+
+              console.log('[Acuity debug] message received', { origin: event.origin, data: data, payload: payload });
+
+              var isAppointmentScheduled =
+                /appointmentScheduled|scheduled|confirmation|thank-you|thankYou/i.test(payload);
+
+              if (!isAppointmentScheduled || notified) return;
+              notified = true;
+
+              var message = {
+                source: 'acuity-embed',
+                event: 'appointmentScheduled',
+                data: data
+              };
+
+              console.log('[Acuity debug] forwarding to parent', message);
+
+              if (window.parent && window.parent !== window) {
+                window.parent.postMessage(message, '*');
+              }
+              window.postMessage(message, '*');
+            });
+          })();
+        </script>
       </div>
     </div>
   </div>
